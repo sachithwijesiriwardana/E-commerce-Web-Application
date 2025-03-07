@@ -7,7 +7,7 @@ import { APIResponseModel } from '../model/Product';
   providedIn: 'root',
 })
 export class MainService {
-  apiUrl: string = 'https://freeapi.miniprojectideas.com/api/BigBasket/';
+  apiUrl: string = '/api/BigBasket/';
 
   constructor(private http: HttpClient) {}
 
