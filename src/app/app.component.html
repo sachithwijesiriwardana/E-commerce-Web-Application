@@ -1,4 +1,152 @@
-<h1>
-  Hellsasaso
-  <h1></h1>
-</h1>
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-body-tertiary"
+  style="background-color: #6262e1 !important"
+>
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#"> E-commerce App </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Projects</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      <a class="link-secondary me-3" href="#">
+        <i class="fa fa-shopping-cart"></i>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-end show"
+        style="position: absolute; right: 13px; top: 60px"
+        aria-labelledby="navbarDropdownMenuAvatar"
+      >
+        <div class="row">
+          <div class="col-8">
+            <h6>Cart Items</h6>
+          </div>
+          <div class="col-4 text-end">
+            <i class="fa fa-close p-2"></i>
+          </div>
+        </div>
+
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <td>
+                <div
+                  class="rounded"
+                  style="
+                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
+                    width: 60px;
+                    height: 60px;
+                    background-size: cover;
+                  "
+                ></div>
+              </td>
+              <td class="align-middle text-left">Spy Suit</td>
+              <td class="align-middle text-center">1 pieces</td>
+              <td class="align-middle text-right">$698</td>
+              <td class="align-middle text-center">
+                <a
+                  href="#delete"
+                  data-toggle="modal"
+                  data-title="Delete your product ?"
+                >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div
+                  class="rounded"
+                  style="
+                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
+                    width: 60px;
+                    height: 60px;
+                    background-size: cover;
+                  "
+                ></div>
+              </td>
+              <td class="align-middle text-left">Spy Suit</td>
+              <td class="align-middle text-center">1 pieces</td>
+              <td class="align-middle text-right">$698</td>
+              <td class="align-middle text-center">
+                <a
+                  href="#delete"
+                  data-toggle="modal"
+                  data-title="Delete your product ?"
+                >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div
+                  class="rounded"
+                  style="
+                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
+                    width: 60px;
+                    height: 60px;
+                    background-size: cover;
+                  "
+                ></div>
+              </td>
+              <td class="align-middle text-left">Spy Suit</td>
+              <td class="align-middle text-center">1 pieces</td>
+              <td class="align-middle text-right">$698</td>
+              <td class="align-middle text-center">
+                <a
+                  href="#delete"
+                  data-toggle="modal"
+                  data-title="Delete your product ?"
+                >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="4" class="align-middle text-right">Quantity</td>
+              <td class="align-middle text-right">55</td>
+            </tr>
+            <tr>
+              <td colspan="4" class="align-middle text-right">Total</td>
+              <td class="align-middle text-right">3600</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
