@@ -33,6 +33,41 @@
           <a class="nav-link" href="#">Projects</a>
         </li>
       </ul>
+      <li class="nav-item dropdown">
+        <!-- <a
+          class="nav-link dropdown-toggle redHover fw-semibold text-uppercase text-black me-1"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa fa-user fs-5 me-1" style="color: #202122"></i>
+        </a> -->
+        <ul
+          class="dropdown-menu"
+          style="left: -50px"
+          aria-labelledby="navbarDropdown"
+        >
+          <li>
+            <div class="d-flex justify-content-evenly mt-2">
+              <a
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                <button class="btn btn-danger rounded-0 px-3">Login</button></a
+              >
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button class="btn btn-danger rounded-0 px-3">
+                  Register
+                </button></a
+              >
+            </div>
+          </li>
+        </ul>
+      </li>
       <!-- Left links -->
     </div>
     <!-- Collapsible wrapper -->
@@ -40,9 +75,22 @@
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- Icon -->
+      @if(loggedUserData.custId == 0){
+
+      <button class="btn btn-success" (click)="openLoginModel()">Login</button>
+      <button class="btn btn-success mx-2" (click)="openRegisterModel()">
+        Register
+      </button>
+
+      }@else {
+      <button class="btn btn-primary">{{ loggedUserData.name }}</button>
+      <button class="btn btn-info mx-2" (click)="logOff()">Logout</button>
+      }
+
       <a class="link-secondary me-3" href="#">
         <i class="fa fa-shopping-cart"></i>
       </a>
+
       <!-- <div
         class="dropdown-menu dropdown-menu-end show"
         style="position: absolute; right: 13px; top: 60px"
@@ -150,3 +198,129 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+<div class="modal" id="myModal" #registerModel>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeRegisterModel()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Name </label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.name"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Mobile No </label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.MobileNo"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Password </label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.Password"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeRegisterModel()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="onRegister()"
+        >
+          Register Button
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal" #loginModel>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeLoginModel()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">User Name </label>
+            <input
+              type="text"
+              [(ngModel)]="loginObj.UserName"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">User Password </label>
+            <input
+              type="text"
+              [(ngModel)]="loginObj.UserPassword"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeLoginModel()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="onLogin()"
+        >
+          Login Button
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
