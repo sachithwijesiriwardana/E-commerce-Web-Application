@@ -37,4 +37,12 @@ export class MainService {
     const url = `${this.apiUrl}AddToCart`;
     return this.http.post<APIResponseModel>(url, obj);
   }
+
+  getCarttProductByCustomerId(
+    loggedUserData: number
+  ): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(
+      `${this.apiUrl}GetCartProductsByCustomerId?id=${loggedUserData}`
+    );
+  }
 }

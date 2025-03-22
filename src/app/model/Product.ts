@@ -11,6 +11,19 @@ export interface CategoryList {
   userId: number;
 }
 
+export interface RootObject {
+  cartId: number;
+  custId: number;
+  productId: number;
+  quantity: number;
+  addedDate: Date;
+  productShortName: string;
+  prodductName: string;
+  categoryName: string;
+  productImageUrl: string;
+  productPrice: number;
+}
+
 export class Customer {
   custId: number;
   name: string;
@@ -18,7 +31,7 @@ export class Customer {
   Password: string;
 
   constructor() {
-    this.custId = 1;
+    this.custId = 0;
     this.name = '';
     this.MobileNo = '';
     this.Password = '';

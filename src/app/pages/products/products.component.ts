@@ -60,12 +60,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       })
     );
   }
-  ngOnDestroy(): void {
-    this.subscriptionList.forEach((element) => {
-      element.unsubscribe();
-    });
-  }
-
   onAddtoCart(id: number) {
     const newObj: Cartmodel = new Cartmodel();
     newObj.ProductId = id;
@@ -76,6 +70,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
       } else {
         alert(res.message);
       }
+    });
+  }
+  ngOnDestroy(): void {
+    this.subscriptionList.forEach((element) => {
+      element.unsubscribe();
     });
   }
 }

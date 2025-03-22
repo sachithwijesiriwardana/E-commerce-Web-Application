@@ -87,12 +87,17 @@
       <button class="btn btn-info mx-2" (click)="logOff()">Logout</button>
       }
 
-      <a class="link-secondary me-3" href="#">
-        <i class="fa fa-shopping-cart"></i>
+      <a class="link-secondary me-3">
+        <i class="fa fa-shopping-cart text-white" (click)="showSCartPop()"></i>
       </a>
 
-      <!-- <div
-        class="dropdown-menu dropdown-menu-end show"
+      <div
+        [className]="
+          isPopUpOen
+            ? 'dropdown-menu dropdown-menu-end hide '
+            : 'dropdown-menu dropdown-menu-end show'
+        "
+        class=""
         style="position: absolute; right: 13px; top: 60px"
         aria-labelledby="navbarDropdownMenuAvatar"
       >
@@ -101,27 +106,28 @@
             <h6>Cart Items</h6>
           </div>
           <div class="col-4 text-end">
-            <i class="fa fa-close p-2"></i>
+            <i class="fa fa-close p-2" (click)="showSCartPop()"></i>
           </div>
         </div>
 
         <table class="table table-sm">
           <tbody>
+            @for (item of cartDate; track $index) {
             <tr>
               <td>
                 <div
                   class="rounded"
                   style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
+                    background-image: url('{{ item.productImageUrl }}');
                     width: 60px;
                     height: 60px;
                     background-size: cover;
                   "
                 ></div>
               </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
+              <td class="align-middle text-left">{{ item.prodductName }}</td>
+              <td class="align-middle text-center">{{ item.quantity }}</td>
+              <td class="align-middle text-right">{{ item.productPrice }}</td>
               <td class="align-middle text-center">
                 <a
                   href="#delete"
@@ -132,56 +138,7 @@
                 </a>
               </td>
             </tr>
-            <tr>
-              <td>
-                <div
-                  class="rounded"
-                  style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
-                    width: 60px;
-                    height: 60px;
-                    background-size: cover;
-                  "
-                ></div>
-              </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
-              <td class="align-middle text-center">
-                <a
-                  href="#delete"
-                  data-toggle="modal"
-                  data-title="Delete your product ?"
-                >
-                  <i class="fa fa-trash"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  class="rounded"
-                  style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
-                    width: 60px;
-                    height: 60px;
-                    background-size: cover;
-                  "
-                ></div>
-              </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
-              <td class="align-middle text-center">
-                <a
-                  href="#delete"
-                  data-toggle="modal"
-                  data-title="Delete your product ?"
-                >
-                  <i class="fa fa-trash"></i>
-                </a>
-              </td>
-            </tr>
+            }
 
             <tr>
               <td colspan="4" class="align-middle text-right">Quantity</td>
@@ -193,7 +150,7 @@
             </tr>
           </tbody>
         </table>
-      </div> -->
+      </div>
     </div>
   </div>
 </nav>
