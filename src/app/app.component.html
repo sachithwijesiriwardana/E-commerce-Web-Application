@@ -130,7 +130,7 @@
               <td class="align-middle text-right">{{ item.productPrice }}</td>
               <td class="align-middle text-center">
                 <a
-                  href="#delete"
+                  (click)="deleteCartById(item.cartId)"
                   data-toggle="modal"
                   data-title="Delete your product ?"
                 >
@@ -148,8 +148,20 @@
               <td colspan="4" class="align-middle text-right">Total</td>
               <td class="align-middle text-right">3600</td>
             </tr>
+            <tr></tr>
           </tbody>
         </table>
+        <div class="row">
+          <div class="col-12 text-end">
+            <button
+              class="btn btn-sm btn-primary"
+              (click)="isPopUpOen = true"
+              [routerLink]="['/create-order']"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

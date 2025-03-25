@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import {
   APIResponseModel,
   Cartmodel,
@@ -21,7 +21,7 @@ import { Constant } from './constant/constant';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -45,6 +45,11 @@ export class AppComponent implements OnInit {
       this.loggedUserData = parseObj;
       this.getCartItems();
     }
+    this.mainService.onCartAdded.subscribe((res: boolean) => {
+      if (res) {
+        this.getCartItems();
+      }
+    });
   }
 
   getCartItems() {
@@ -94,7 +99,7 @@ export class AppComponent implements OnInit {
     console.log('Login object:', this.loginObj); // Debug: Check the login object
     this.mainService.login(this.loginObj).subscribe({
       next: (res) => {
-        console.log('API response:', res); // Debug: Check the API response
+        console.log('API response:', res);
         if (res.result) {
           this.loggedUserData = res.data;
           localStorage.setItem(Constant.LOCAL_KEY, JSON.stringify(res.data));
@@ -113,6 +118,18 @@ export class AppComponent implements OnInit {
 
   showSCartPop() {
     this.isPopUpOen = !this.isPopUpOen;
+  }
+  deleteCartById(cartId: number) {
+    this.mainService
+      .deleteProductFromCartById(cartId)
+      .subscribe((res: APIResponseModel) => {
+        if (res.result) {
+          alert('Item Dweleted From cart');
+          this.getCartItems();
+        } else {
+          alert(res.message);
+        }
+      });
   }
 
   logOff() {

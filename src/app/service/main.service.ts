@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { APIResponseModel, Cartmodel, Customer, Login } from '../model/Product';
+import { Constant } from '../constant/constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainService {
   apiUrl: string = '/api/BigBasket/';
+  onCartAdded: Subject<boolean> = new Subject<boolean>();
+  loggedUserData: Customer = new Customer();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const isUser = localStorage.getItem(Constant.LOCAL_KEY);
+    if (isUser != null) {
+      const parseObj = JSON.parse(isUser);
+      this.loggedUserData = parseObj;
+    }
+  }
 
   getAllProducts(): Observable<APIResponseModel> {
     return this.http.get<APIResponseModel>(this.apiUrl + 'GetAllProducts');
@@ -43,6 +52,12 @@ export class MainService {
   ): Observable<APIResponseModel> {
     return this.http.get<APIResponseModel>(
       `${this.apiUrl}GetCartProductsByCustomerId?id=${loggedUserData}`
+    );
+  }
+
+  deleteProductFromCartById(cartId: number): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(
+      `${this.apiUrl}DeleteProductFromCartById?id=${cartId}`
     );
   }
 }
